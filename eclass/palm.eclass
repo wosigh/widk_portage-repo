@@ -1,12 +1,18 @@
-EAPI="2"
-
 inherit eutils
+
+: ${PATCH_LEVEL:=-p1}
 
 WEBOS_VERSION="1.4.1.1"
 
 RESTRICT="mirror"
 
-SRC_URI="${PALM_SRC_URI} ${PALM_PATCHES_URI}"
+PALM_URI_BASE="http://palm.cdnetworks.net/opensource/${WEBOS_VERSION}/"
+
+SRC_URI="${PALM_URI_BASE}${PALM_SRC}"
+
+if [ -n "${PALM_PATCHES}" ]; then
+	SRC_URI="${SRC_URI} ${PALM_URI_BASE}${PALM_PATCHES}"
+fi
 
 DESCRIPTION="Palm Opensource Package: ${PN}"
 
@@ -14,14 +20,11 @@ HOMEPAGE="http://opensource.palm.com/packages.html"
 
 KEYWORDS="arm x86"
 
-EXPORT_FUNCTIONS src_prepare
+EXPORT_FUNCTIONS src_unpack
 
-: ${PATCHES=DIR:=".."}
-
-palm_src_prepare() {
-	if [[ -n ${PALM_PATCHES_URI} ]]; then
-		for patch in $(ls ${PATCHES_DIR}/*.patch); do
-			epatch ${patch}
-		done
+palm_src_unpack() {
+	unpack ${PALM_SRC}
+	if [ -n "${PALM_PATCHES}" ]; then
+		zcat ${DISTDIR}/${PALM_PATCHES} | patch -d ${P} ${PATCH_LEVEL}
 	fi
 }

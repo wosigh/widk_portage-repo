@@ -1,0 +1,19 @@
+diff --git a/ncurses/Makefile.in b/ncurses/Makefile.in
+index 5b00910..92f202d 100644
+--- a/ncurses/Makefile.in
++++ b/ncurses/Makefile.in
+@@ -201,12 +201,12 @@ keys.list :	$(tinfo)/MKkeys_list.sh
+ make_keys$(BUILD_EXEEXT) : \
+ 		$(tinfo)/make_keys.c \
+ 		names.c
+-	$(BUILD_CC) -o $@ $(BUILD_CCFLAGS) $(tinfo)/make_keys.c $(BUILD_LDFLAGS) $(BUILD_LIBS)
++	$(BUILD_CC) -o $@ $(BUILD_CCFLAGS) $(tinfo)/make_keys.c $(BUILD_LIBS)
+ 
+ make_hash$(BUILD_EXEEXT) : \
+ 		$(tinfo)/comp_hash.c \
+ 		../include/hashsize.h
+-	$(BUILD_CC) -o $@ $(BUILD_CCFLAGS) -DMAIN_PROGRAM $(tinfo)/comp_hash.c $(BUILD_LDFLAGS) $(BUILD_LIBS)
++	$(BUILD_CC) -o $@ $(BUILD_CCFLAGS) -DMAIN_PROGRAM $(tinfo)/comp_hash.c $(BUILD_LIBS)
+ 
+ expanded.c : $(serial)/MKexpanded.sh
+ 	sh $(serial)/MKexpanded.sh "$(CPP)" $(CPPFLAGS) > $@
