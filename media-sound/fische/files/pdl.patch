@@ -1,0 +1,46 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index bd0fe89..034e87c 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -47,5 +47,5 @@ fische_SOURCES = \
+ fische_LDFLAGS = 
+ 
+ fische_LDADD = \
+-	$(SDL_LIBS)
++	$(SDL_LIBS) -lpdl
+ 
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 6e249a6..c41db3d 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -247,7 +247,7 @@ fische_SOURCES = \
+ 
+ fische_LDFLAGS = 
+ fische_LDADD = \
+-	$(SDL_LIBS)
++	$(SDL_LIBS) -lpdl
+ 
+ all: all-am
+ 
+diff --git a/src/main.cpp b/src/main.cpp
+index c4afcca..daa21e5 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -39,6 +39,8 @@
+ #include "analyst.h"
+ #include "configuration.h"
+ 
++#include "PDL.h"
++
+ using namespace std;
+ 
+ int main (int argc, char** argv) {
+@@ -47,6 +49,8 @@ int main (int argc, char** argv) {
+ 	uint32_t frames = 0;
+ 	uint32_t ticks = 0;
+ 
++	PDL_Init(0);
++
+ 	// initialize random number generator
+ 	srand (time (NULL) );
+ 

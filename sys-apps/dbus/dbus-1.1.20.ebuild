@@ -8,7 +8,7 @@ SLOT="0"
 
 IUSE="debug doc selinux X"
 
-RDEPEND=""
+RDEPEND="dev-libs/expat"
 DEPEND="${RDEPEND}"
 
 src_compile() {

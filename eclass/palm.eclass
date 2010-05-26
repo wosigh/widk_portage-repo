@@ -25,6 +25,6 @@ EXPORT_FUNCTIONS src_unpack
 palm_src_unpack() {
 	unpack ${PALM_SRC}
 	if [ -n "${PALM_PATCHES}" ]; then
-		zcat ${DISTDIR}/${PALM_PATCHES} | patch -d ${P} ${PATCH_LEVEL}
+		zcat ${DISTDIR}/${PALM_PATCHES} | patch -d ${S} ${PATCH_LEVEL}
 	fi
 }
