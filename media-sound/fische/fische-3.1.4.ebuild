@@ -7,9 +7,9 @@ KEYWORDS="arm x86"
 
 S="${WORKDIR}/fische-3.1"
 
-src_prepare() {
-	epatch ${FILESDIR}/pdl.patch
-}
+#src_prepare() {
+#	epatch ${FILESDIR}/pdl.patch
+#}
 
 src_install() {
 	into /usr

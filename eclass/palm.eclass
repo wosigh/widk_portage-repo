@@ -20,11 +20,15 @@ HOMEPAGE="http://opensource.palm.com/packages.html"
 
 KEYWORDS="arm x86"
 
-EXPORT_FUNCTIONS src_unpack
+EXPORT_FUNCTIONS src_unpack src_install
 
 palm_src_unpack() {
 	unpack ${PALM_SRC}
 	if [ -n "${PALM_PATCHES}" ]; then
 		zcat ${DISTDIR}/${PALM_PATCHES} | patch -d ${S} ${PATCH_LEVEL}
 	fi
+}
+
+palm_src_install() {
+    emake DESTDIR="${D}" install || die "Install failed"
 }

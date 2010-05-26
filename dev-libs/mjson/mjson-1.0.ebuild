@@ -15,3 +15,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sh autogen.sh
 }
+
+src_install() {
+    emake DESTDIR="${D}" install || die "Install failed"
+}
