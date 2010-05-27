@@ -1,4 +1,4 @@
-EGIT_REPO_URI="git://git.webos-internals.org/libraries/pdl.git"
+EGIT_REPO_URI="git://git.webos-internals.org/libraries/lunaservice.git"
 
 inherit git toolchain-funcs
 
@@ -16,8 +16,8 @@ src_compile() {
 
 src_install() {
 	into /usr
-	dolib.so libpdl.so
-	insinto /usr/include/pdl
-	doins PDL.h
+	dolib.so liblunaservice.so
+	insinto /usr/include/lunaservice
+	doins *.h
 }
 
